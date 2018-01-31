@@ -5,13 +5,22 @@ import * as actions  from './todosActions';
 describe('should work', ()=> (
   it('add todo', () =>
     {
-      const numbers = [2, 3];
+      const numbers = {
+        user: {
+          name: 'Pasha',
+          id: 2,
+        }
+
+      };
       const add = actions.addTodo(numbers);
 
       expect(add).toEqual(
         {
           type: actions.ADD_TODO,
-          stuff: [2, 3]
+          user:  {
+            name: 'Pasha',
+            id: 2,
+          }
         }
         );
     }

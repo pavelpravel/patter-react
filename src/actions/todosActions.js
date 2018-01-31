@@ -1,11 +1,11 @@
 export const ADD_TODO = 'ADD_TODO'
 export const RATE_TODO = 'RATE_TODO'
 
-export const addTodo = (stuff) =>(
+export const addTodo = (user) =>(
 
     {
       type: ADD_TODO,
-    stuff
+    user
     }
   )
 
