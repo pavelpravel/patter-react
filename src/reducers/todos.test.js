@@ -8,22 +8,20 @@ describe('reducer should work', ()=> (
       const state = {};
       const action ={
         type: ADD_TODO,
-        user: {
           name: 'Pasha',
-          id: 2,
-          rating: 0
-        }
+          id: 2
       };
       const add = todos(state,action);
 
       expect(add).toEqual(
-          {
-            user: {
-              name: 'Pasha',
-              id: 2,
-              rating: 0,
-            }
-          }
+          [{
+
+            name: 'Pasha',
+
+            id: 2,
+            rating: 0,
+
+          }]
         );
     }
   )
@@ -32,11 +30,9 @@ describe('reducer should work', ()=> (
 test('rate todo', () =>
   {
     const state = {
-      user: {
         name: 'Pasha',
-        id: 2,
-        rating: 0,
-      }
+      id: 2,
+      rating: 0,
     };
     const action ={
       type: RATE_TODO,
@@ -46,13 +42,13 @@ test('rate todo', () =>
     const add = todos(state,action);
 
     expect(add).toEqual(
-        {
-          user: {
+        [{
+
             name: 'Pasha',
             id: 2,
             rating: 3
-          }
-        }
+          }]
+
       );
   }
 )

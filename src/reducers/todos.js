@@ -1,38 +1,35 @@
-const todo = (state, action) => {
+
+const todos = (state = [{
+  name: 'example',
+  id: 0,
+  rating: 0
+}], action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      return {
-        name: action.user.name,
-        id: action.user.id,
-        rating: action.user.rating,
-      }
+      return  [
+        ...state,
+        {
+          name: action.user.name,
+          id: action.id,
+          rating: 0,
 
-    default:
-
-  }
-}
-
-const todos = (state=[], action) => {
-  const {user} = action;
-
-  switch (action.type) {
-    case 'ADD_TODO': return [
-      ...state,
-      todo(undefined, action)
-    ];
-    case "RATE_TODO":
-      if (state.user.id !== action.id) {
-        return {
-          ...state
         }
-      };
-      return {
-        ...state
-      }
-    default:
-      return state;
+      ]
+
+      case 'RATE_TODO':
+      return state.map(todo =>
+     (todo.id === action.id)
+       ? {...todo, rating: action.rating}
+       : todo
+   )
+
+    default: return state
+
+
   }
 
 }
+
+
 
 export default todos;

@@ -16,5 +16,8 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-  }
+  },
+  {
+  "presets": ["env", "react", "@babel/preset-env"]
+}
 }

@@ -1,43 +1,33 @@
-
+import {v4} from 'node-uuid';
 import * as actions  from './todosActions';
 
 
 describe('should work', ()=> (
-  it('add todo', () =>
-    {
-      const numbers = {
-        user: {
+  it('add todo action', () =>
+      {
+      const user = {
           name: 'Pasha',
-          id: 2,
-        }
-
       };
-      const add = actions.addTodo(numbers);
+      const add = actions.addTodo(user);
 
-      expect(add).toEqual(
-        {
-          type: actions.ADD_TODO,
-          user:  {
-            name: 'Pasha',
-            id: 2,
-          }
-        }
+      expect(add.type).toEqual(
+        "ADD_TODO"
         );
+      expect(add.user).toEqual(
+        {name: 'Pasha'}
+      )
     }
   )
 
 ))
 
-test('rate todo', () =>
+test('rate todo action', () =>
   {
     const id = 2;
     const add = actions.rateTodo(id);
 
-    expect(add).toEqual(
-      {
-        type: actions.RATE_TODO,
-        id: 2
-      }
+    expect(add.type).toEqual(
+        "RATE_TODO"
       );
   }
 )
