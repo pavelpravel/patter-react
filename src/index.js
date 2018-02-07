@@ -1,21 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {createStore, applyMiddleware} from 'redux';
+
 import {Provider} from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-import rootReducer from './reducers/rootReducer';
-import { createLogger } from 'redux-logger'
-import thunkMiddleware from 'redux-thunk';
 
 
-const logger = createLogger();
-const store = createStore(rootReducer,
+import configureStore from './store';
+
+
+
+/*/const store = createStore(
+    rootReducer,
+    preloadedState,
     applyMiddleware(
-        thunkMiddleware, logger
+        thunkMiddleware,
+        logger
     )
-)
+)/*/
 
+
+
+const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>

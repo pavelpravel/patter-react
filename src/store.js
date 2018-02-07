@@ -1,29 +1,17 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import {createStore, applyMiddleware} from 'redux';
+import rootReducer from './reducers/rootReducer';
+import { createLogger } from 'redux-logger'
+import thunkMiddleware from 'redux-thunk';
 
-let todoApp = combineReducers(reducers)
-let store = createStore(
-  todoApp,
-  applyMiddleware(logger, crashReporter)
-)
+const logger = createLogger();
 
-const logger = store => next => action => {
-  console.log('dispatching', action)
-  let result = next(action)
-  console.log('next state', store.getState())
-  return result
-}
-
-const crashReporter = store => next => action => {
-  try {
-    return next(action)
-  } catch (err) {
-    console.error('Caught an exception!', err)
-    Raven.captureException(err, {
-      extra: {
-        action,
-        state: store.getState()
-      }
-    })
-    throw err
-  }
+export default function configureStore(preloadedState) {
+ return createStore(
+   rootReducer,
+   preloadedState,
+   applyMiddleware(
+     thunkMiddleware,
+     logger
+   )
+ )
 }
