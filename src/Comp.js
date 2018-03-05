@@ -1,9 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from './actions/todosActions';
-import FormUser from './forms/FormUser';
 
-const Header = ({addTodo}) => {
+const Comp = ({addTodo}) => {
 
   const onChangeForm = (user) =>
    {addTodo(user)};
@@ -11,13 +10,12 @@ const Header = ({addTodo}) => {
   return (
 
   <div>
-    <h2>Header</h2>
-  <FormUser onSubmit={onChangeForm}/>
+    <h2>Comp</h2>
   </div>
 )};
 
 const mapDispatchToProps = ({
-addTodo: actions.addTodo
+
 })
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Comp);

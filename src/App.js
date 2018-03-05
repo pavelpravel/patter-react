@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import VisibleList from './VisibleList';
-import AsyncApp from './AsyncApp';
+import Comp from './Comp';
+
 
 class App extends Component {
   render() {
     return (
       <div >
-        <Header />
-      <VisibleList />
-      <AsyncApp />
+        <Comp />
+    
       </div>
     );
   }
